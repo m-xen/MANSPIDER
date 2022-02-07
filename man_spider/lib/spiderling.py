@@ -268,7 +268,7 @@ class Spiderling:
                     remote_file = RemoteFile(full_path_fixed, share, self.target, size=filesize)
 
                     # if it's a non-empty file that's smaller than the size limit
-                    if filesize > 0 and filesize < self.parent.max_filesize:
+                    if filesize > 0 and filesize > self.parent.max_filesize:
 
                         # if it matched filename/extension filters and we're downloading files
                         if (self.parent.file_extensions or self.parent.filename_filters) and not self.parent.no_download:

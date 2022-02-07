@@ -36,7 +36,7 @@ def go(options):
             log.error('--maxdepth must be greater than zero')
             return
 
-        log.info(f'Skipping files larger than {bytes_to_human(options.max_filesize)}')
+        log.info(f'Skipping files smaller than {bytes_to_human(options.max_filesize)}')
         log.info(f'Using {options.threads:,} threads')
 
         manspider = MANSPIDER(options)
@@ -98,7 +98,7 @@ def main():
     parser.add_argument('-n', '--no-download',   action='store_true',       help='don\'t download matching files')
     parser.add_argument('-mfail', '--max-failed-logons', type=int,          help='limit failed logons', metavar='INT')
     parser.add_argument('-o', '--or-logic', action='store_true',            help=f'use OR logic instead of AND (files are downloaded if filename OR extension OR content match)')
-    parser.add_argument('-s', '--max-filesize', type=human_to_int, default=human_to_int('10M'), help=f'don\'t retrieve files over this size, e.g. "500K" or ".5M" (default: 10M)', metavar='SIZE')
+    parser.add_argument('-s', '--max-filesize', type=human_to_int, default=human_to_int('10M'), help=f'don\'t retrieve files under this size, e.g. "500K" or ".5M" (default: 10M)', metavar='SIZE')
     parser.add_argument('-v', '--verbose', action='store_true',             help='show debugging messages')
 
     syntax_error = False
